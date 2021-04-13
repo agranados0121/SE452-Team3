@@ -1,0 +1,6 @@
+Proposed tables as of now:
+    Inventory
+    Employees
+    Customers
+    Store_Owner
+    Payroll
