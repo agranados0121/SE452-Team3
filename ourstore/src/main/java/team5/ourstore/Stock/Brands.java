@@ -10,7 +10,7 @@ import lombok.Data;
 public class Brands {
     @Id
     @Column(name = "brand_id")
-    int id;
+    Integer id;
     @Column(name = "brand_name")
     String name;
 }
