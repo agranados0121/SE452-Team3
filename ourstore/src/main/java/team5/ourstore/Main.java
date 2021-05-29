@@ -1,8 +1,5 @@
 package team5.ourstore;
 
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -39,20 +36,26 @@ public class Main {
     }
 	
     @Bean
-    public CommandLineRunner showReviews(ProductReviewRepository reviewRepository) {
+    public CommandLineRunner importMongoTestData(PaymentInfoRepository paymentRepository,
+                    ProductReviewRepository reviewRepository,
+                    ShippingInfoRepository shippingRepository,
+                    ShoppingCartRepository cartRepository)
+    {
         return(args) -> {
-            System.out.println("Mongo DB init...");
-            Date date = new Date();
-            ProductReview lucyReview = new ProductReview(1, 145,"cool shoes, fast shipping", "lucy", date, 5);
-            ProductReview billReview = new ProductReview(2, 145, "lame shoes, slow shipping", "bill", date, 1);
-            reviewRepository.save(lucyReview);
-            reviewRepository.save(billReview);
-            ProductReviewController reviewController = new ProductReviewController(reviewRepository);
-            List<ProductReview> reviews = reviewController.getAll();
-            for (ProductReview productReview : reviews) {
-                System.out.println(productReview.toString());
-            }
+            paymentRepository.deleteAll();
             reviewRepository.deleteAll();
+            shippingRepository.deleteAll();
+            cartRepository.deleteAll();
+            System.out.println("Mongo DB init...");
+            PaymentInfoController paymentController = new PaymentInfoController(paymentRepository);
+            ProductReviewController reviewController = new ProductReviewController(reviewRepository);
+            ShippingInfoController shippingController = new ShippingInfoController(shippingRepository);
+            ShoppingCartController cartController = new ShoppingCartController(cartRepository);
+            paymentController.setUpTestData();
+            reviewController.setUpTestData();
+            shippingController.setUpTestData();
+            cartController.setUpTestData();
+            System.out.println("Mongo DB setup complete...");
         };
     }
 }
