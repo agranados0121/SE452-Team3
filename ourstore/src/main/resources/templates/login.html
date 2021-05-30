@@ -68,7 +68,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="/home-page">Home
+            <a class="nav-link waves-effect" href="/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -130,6 +130,11 @@
                           </div>
 
                               <div class="col-md-6 offset-md-4">
+                                <form th:action="@{/login}" method="post">
+                                  <div><label> Email : <input type="text" name="email"/> </label></div>
+                                  <div><label> Password: <input type="password" name="password"/> </label></div>
+                                  <div><input type="submit" value="Sign In"/></div>
+                              </form>
                                   <button type="submit" class="btn btn-primary">
                                       Login
                                   </button>
