@@ -1,5 +1,7 @@
 package team5.ourstore.Store;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +22,11 @@ public class HomeController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/")
+    @GetMapping("/")
     public ModelAndView viewAllProducts() {
         ModelAndView model = new ModelAndView("home-page");
         //  Use . notation to access the data fields/populate product page
+        
         model.addObject("products", productService.getProductCatalog());
         return model;
     }
