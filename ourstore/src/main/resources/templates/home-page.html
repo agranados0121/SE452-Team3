@@ -69,7 +69,9 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            
+            <a class="nav-link waves-effect" href="/">Home
+              <span class="sr-only"></span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link waves-effect" href="/signin">
@@ -399,7 +401,7 @@
                     
                       <!-- Modal Header -->
                       <div class="modal-header">
-                        <h4 class="modal-title">Grey blouse</h4>
+                        <h4 class="modal-title">Grey sweater</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                       </div>
                       
@@ -410,25 +412,25 @@
                         <a>
                           <div class="mask rgba-white-slight"></div>
                         </a>
-                        A classic grey blouse...
+                        A classic grey sweater...
                       </div>
 
                       <!-- Review Form -->
                       <hr/>
                       <form name="my-form" method="POST" enctype="utf8">
                         <div class="form-group row">
-                          <label for="first_name" class="col-md-4 col-form-label text-md-right">First Name</label>
+                          <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                           <div class="col-md-6">
-                              <input type="text" id="first_name" class="form-control" name="first-name">
+                              <input type="text" id="name" class="form-control" name="name">
                           </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="last_name" class="col-md-4 col-form-label text-md-right">Last Name</label>
-                            <div class="col-md-6">
-                                <input type="text" id="last_name" class="form-control" name="last-name">
-                            </div>
+                        <div class="form-group">
+                          <label for="review" class=" col-form-label text-md-right">Review</label>
+                          <textarea class="col-md-6" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
+
+                      
 
                         <div class="col-md-6 offset-md-4">
                             <button class="btn btn-primary" href="/">
