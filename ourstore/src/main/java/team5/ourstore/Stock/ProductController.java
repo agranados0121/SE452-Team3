@@ -1,33 +1,39 @@
 package team5.ourstore.Stock;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import team5.ourstore.Store.Promotion;
-import team5.ourstore.Store.PromotionRepository;
-
-@RestController
+@Controller
 @RequestMapping("/products")
 public class ProductController {
     
-    private InventoryRepository inventoryRepository;
-    private ProductRepository productRepository;
-    private PromotionRepository promotionRepository;
-
     @Autowired
-    public ProductController (InventoryRepository inventoryRepository, ProductRepository productRepository, PromotionRepository promotionRepository) {
-        this.inventoryRepository = inventoryRepository;
-        this.productRepository = productRepository;
-        this.promotionRepository = promotionRepository;
+    private ProductService productService;
+
+    @PostMapping("/")
+    public ModelAndView viewAllProducts() {
+        ModelAndView model = new ModelAndView("home-page");
+        //  Use . notation to access the data fields/populate product page
+        model.addObject("products", productService.getProductCatalog());
+        return model;
     }
 
-    //  Customer / Products
+    //@PostMapping("/product-page")
+    public ModelAndView viewProductByCategory(Category category) {
+        ModelAndView model = new ModelAndView("/product-page/{category.category.getCategoryname()}");
+        //  Use . notation to access the data fields/populate product page
+        model.addObject("category", productService.getByCategoryid(category.getCategoryid()));
+        return model;
+    }
+
+    //  Product Page
+    //  Implement add-to-cart button (using product service)
     @PostMapping("/product-page")
     public ModelAndView viewProduct(Product product) {
         ModelAndView model = new ModelAndView("/product-page");
@@ -48,59 +54,12 @@ public class ProductController {
     @PostMapping("/admin-home")
     public ModelAndView submitEditForm(Product product) {
         ModelAndView model = new ModelAndView("/admin-home");
-        for (Product p : getProductCatalog()) {
+        for (Product p : productService.getProductCatalog()) {
             if (p.getProductid() == product.getProductid()) {
-                removeProductFromCatalog(p);
+                productService.removeProductFromCatalog(p);
             }
-            addProductToCatalog(product);
+            productService.addProductToCatalog(product);
         }
         return model;
     }
-
-    public void addProductToCatalog(Product product) {
-        productRepository.save(product);
-    }
-
-    public void removeProductFromCatalog(Product product) {
-        productRepository.delete(product);
-    }
-
-    //  Product Getters
-    public Product getByProductid(long productId) {
-        return productRepository.findByProductid(productId);
-    }
-
-    public Product getByCategoryid(long categoryId) {
-        return productRepository.findByCategoryid(categoryId);
-    }
-
-    public List<Product> getProductCatalog() {
-        return productRepository.findAll();
-    }
-
-    //  Inventory
-    public void updateInventory(long productId, int quantity) {
-        Inventory inv = inventoryRepository.findByProductid(productId);
-        inv.setQuantity(quantity);
-    }
-
-    public Boolean isInStock(Product product) {
-        Inventory inv = inventoryRepository.findByProductid(product.getProductid());
-        return inv.getQuantity() > 0;
-    }
-
-    //  (Discount is inverse)
-    //  Add brand/category promotions?
-    public float getDiscount(long productId) {
-        float discount = 1;
-        List<Promotion> promotions = promotionRepository.findAll();
-        for (Promotion promo : promotions) {
-            if (promo.getProductid() == productId) {
-                if (discount > promo.getDiscount()) {
-                    discount = promo.getDiscount();
-                }
-            }
-        }
-        return discount;
-    }  
 }
