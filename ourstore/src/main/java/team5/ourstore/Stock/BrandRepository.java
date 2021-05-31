@@ -2,6 +2,6 @@ package team5.ourstore.Stock;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface BrandsRepository extends CrudRepository<Brands, Integer> {
+public interface BrandRepository extends CrudRepository<Brand, Integer> {
     
 }

@@ -1,5 +1,8 @@
 package team5.ourstore;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -9,12 +12,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import team5.ourstore.Ordering.*;
+import team5.ourstore.Stock.InventoryRepository;
+import team5.ourstore.Stock.Product;
+import team5.ourstore.Stock.ProductController;
+import team5.ourstore.Stock.ProductRepository;
 import team5.ourstore.Store.*;
-import team5.ourstore.UserType.Customer;
-import team5.ourstore.UserType.CustomerRepository;
 
 @EnableMongoRepositories(basePackageClasses = {PaymentInfo.class,
                             ProductReview.class,
@@ -28,39 +32,20 @@ public class Main {
     }
     
     @Bean
-    public CommandLineRunner addCustomer(CustomerRepository repository){
+    public CommandLineRunner shoppingTest(InventoryRepository inventoryRepository, ProductRepository productRepository, ShoppingCartRepository cartRepository, PromotionRepository promotionRepository) {
         return(args) ->{
-            Customer j = new Customer();
-            j.setId(3);
-            j.setFirst_name("Sam");
-            j.setLast_name("smith");
-            j.setEmail("ssmith@google.com");
-            j.setPasswords("passwords");
-            repository.save(j);
-        };
-    }
-	
-    @Bean
-    public CommandLineRunner importMongoTestData(PaymentInfoRepository paymentRepository,
-                    ProductReviewRepository reviewRepository,
-                    ShippingInfoRepository shippingRepository,
-                    ShoppingCartRepository cartRepository)
-    {
-        return(args) -> {
-            paymentRepository.deleteAll();
-            reviewRepository.deleteAll();
-            shippingRepository.deleteAll();
-            cartRepository.deleteAll();
-            System.out.println("Mongo DB init...");
-            PaymentInfoController paymentController = new PaymentInfoController(paymentRepository);
-            ProductReviewController reviewController = new ProductReviewController(reviewRepository);
-            ShippingInfoController shippingController = new ShippingInfoController(shippingRepository);
-            ShoppingCartController cartController = new ShoppingCartController(cartRepository);
-            paymentController.setUpTestData();
-            reviewController.setUpTestData();
-            shippingController.setUpTestData();
-            cartController.setUpTestData();
-            System.out.println("Mongo DB setup complete...");
+            ProductController productController = new ProductController(inventoryRepository, productRepository, promotionRepository);
+            ShoppingCartController cartController = new ShoppingCartController(productController, cartRepository);
+            Product p = productRepository.findByProductid(3l);
+            cartController.addToCart(p);
+            p = productRepository.findByProductid(4l);
+            cartController.addToCart(p);
+            p = productRepository.findByProductid(5l);
+            cartController.addToCart(p);
+            for (Product product : cartController.getCartContents()) {
+                System.out.println(product.getProductname());
+            }
+            System.out.println(cartController.calculateTotal());
         };
     }
 }

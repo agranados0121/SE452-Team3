@@ -8,14 +8,16 @@ import lombok.Data;
 
 @Data
 @Entity
-public class OrderItems {
+public class OrderItem {
+
     @Id
-    @Column(name = "order_id")
-    int order_id;
-    @Column(name = "product_id")
-    int product_id;
-    @Column(name = "amt")
-    int amount;
+    @Column(name = "orderid")
+    int orderid;
+    @Column(name = "productid")
+    int productid;
+    @Column(name = "quantity")
+    int quantity;
     @Column(name = "price")
     float price;
+    
 }

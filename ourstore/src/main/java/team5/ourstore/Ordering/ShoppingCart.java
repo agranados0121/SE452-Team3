@@ -12,21 +12,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import team5.ourstore.Stock.Product;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ShoppingCart")
-@Document(collection = "ShoppingCart")
+@Table(name = "shoppingcart")
+@Document(collection = "shoppingcart")
 public class ShoppingCart {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int cart_id;
-	private int user_id;
-	private int shipping_id;
-	private int payment_id;
-	private int promo_id;
-	private List<Integer> products = new ArrayList<Integer>();
+	private int cartid;
+	private int customerid;
+	private List<Product> products = new ArrayList<Product>();
 	private float price;
 
 	@Override
