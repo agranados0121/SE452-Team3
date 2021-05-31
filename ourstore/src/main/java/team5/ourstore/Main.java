@@ -14,11 +14,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import team5.ourstore.Ordering.*;
-import team5.ourstore.Stock.InventoryRepository;
 import team5.ourstore.Stock.Product;
-import team5.ourstore.Stock.ProductController;
 import team5.ourstore.Stock.ProductRepository;
-import team5.ourstore.Store.*;
+import team5.ourstore.Stock.ProductService;
+import team5.ourstore.Store.ProductReview;
 
 @EnableMongoRepositories(basePackageClasses = {PaymentInfo.class,
                             ProductReview.class,
@@ -32,20 +31,24 @@ public class Main {
     }
     
     @Bean
-    public CommandLineRunner shoppingTest(InventoryRepository inventoryRepository, ProductRepository productRepository, ShoppingCartRepository cartRepository, PromotionRepository promotionRepository) {
+    public CommandLineRunner shoppingTest(ProductRepository productRepository, ProductService productService, ShoppingCartRepository cartRepository, OrderRepository orderRepository) {
         return(args) ->{
-            ProductController productController = new ProductController(inventoryRepository, productRepository, promotionRepository);
-            ShoppingCartController cartController = new ShoppingCartController(productController, cartRepository);
+            ShoppingCartService shoppingCartService = new ShoppingCartService(productService, cartRepository, orderRepository);
             Product p = productRepository.findByProductid(3l);
-            cartController.addToCart(p);
+            shoppingCartService.addToCart(p);
             p = productRepository.findByProductid(4l);
-            cartController.addToCart(p);
+            shoppingCartService.addToCart(p);
             p = productRepository.findByProductid(5l);
-            cartController.addToCart(p);
-            for (Product product : cartController.getCartContents()) {
+            shoppingCartService.addToCart(p);
+            for (Product product : shoppingCartService.getCartContents()) {
                 System.out.println(product.getProductname());
             }
-            System.out.println(cartController.calculateTotal());
+            System.out.println(shoppingCartService.calculateTotal());
+            shoppingCartService.checkOut();
+            for (CustomerOrder order : orderRepository.findAll()) {
+                System.out.println(order.getOrderdate());
+                System.out.println(order.getShipdate());
+            }
         };
     }
 }

@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS Brand CASCADE;
 DROP TABLE IF EXISTS Category CASCADE;
 
 CREATE TABLE IF NOT EXISTS Customer(
-	customerid INT UNIQUE PRIMARY KEY,
+	customerid SERIAL UNIQUE PRIMARY KEY,
 	firstname VARCHAR(30),
 	lastname VARCHAR(30),
 	email VARCHAR(64) UNIQUE,
@@ -18,11 +18,10 @@ CREATE TABLE IF NOT EXISTS Customer(
 	);
 	
 CREATE TABLE IF NOT EXISTS CustomerOrder(
-	orderid INT PRIMARY KEY,
+	orderid SERIAL PRIMARY KEY,
 	customerid INT,
-	orderdate DATE,
-	shipdate DATE,
-	FOREIGN KEY(customerid) references Customer(customerid)
+	orderdate VARCHAR(30),
+	shipdate VARCHAR(30)
 	);
 
 CREATE TABLE IF NOT EXISTS Category(
@@ -68,7 +67,7 @@ CREATE TABLE IF NOT EXISTS Income(
 	);
 	
 CREATE TABLE IF NOT EXISTS OrderItem(
-	orderid INT PRIMARY KEY,
+	orderid SERIAL PRIMARY KEY,
 	productid INT,
 	quantity INT,
 	price FLOAT,
