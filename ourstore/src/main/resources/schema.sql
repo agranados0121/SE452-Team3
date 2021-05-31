@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS Product(
 	brandid INT,
 	categoryid INT,
 	price DECIMAL,
+	description VARCHAR(200),
 	FOREIGN KEY(brandid) REFERENCES Brand(brandid),
 	FOREIGN KEY(categoryid) REFERENCES Category(categoryid)
 	);

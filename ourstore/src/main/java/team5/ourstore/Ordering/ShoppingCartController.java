@@ -1,10 +1,9 @@
 package team5.ourstore.Ordering;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +15,7 @@ import team5.ourstore.Stock.ProductController;
 
 @RestController
 @RequestMapping("/shoppingCart")
+@Service
 public class ShoppingCartController {
 
     private ProductController productController;
@@ -28,35 +28,34 @@ public class ShoppingCartController {
         this.cartRepository = cartRepository; 
     }
 
-    @PostMapping("/view-cart")
+    //  Controller / Model
+    @PostMapping("checkout-page")
     public ModelAndView viewCart() {
-        ModelAndView model = new ModelAndView("/shopping-cart");
+        ModelAndView model = new ModelAndView("checkout-page");
         model.addObject("products", getCartContents());
         model.addObject("price", calculateTotal());
         return model;
     }
 
-    @GetMapping("/add-to-cart")
     public ModelAndView addToCart(long product_id) {
         addToCart(productController.getByProductid(product_id));
         return viewCart();
     }
 
-    @GetMapping("/remove-from-cart")
     public ModelAndView removeFromCart(long product_id) {
         removeFromCart(productController.getByProductid(product_id));
         return viewCart();
     }
 
-    @GetMapping("/checkout")
+    @GetMapping("/checkout-page")
     public ModelAndView checkOut(int product_id, int cart_id) {
         //  checkOut();
-        //  error handling for cart svc error thrown if not in stocj
+        //  error handling for cart svc error thrown if not in stock
+        //  
         return viewCart();
     }
 
-    //  Services / Business logic
-
+    //  Service / Business logic
     public void addToCart(Product product) {
         if (productController.isInStock(product)) {
             cart.getProducts().add(product);

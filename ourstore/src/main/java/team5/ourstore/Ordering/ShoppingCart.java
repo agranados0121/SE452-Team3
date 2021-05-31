@@ -24,6 +24,8 @@ public class ShoppingCart {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int cartid;
 	private int customerid;
+	private int paymentid;
+	private int shippingid;
 	private List<Product> products = new ArrayList<Product>();
 	private float price;
 
