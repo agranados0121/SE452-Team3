@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping("/shoppingCart")
+@RequestMapping("/checkout")
 public class ShoppingCartController {
 
     @Autowired
