@@ -69,9 +69,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="/">Home
-              <span class="sr-only">(current)</span>
-            </a>
+            
           </li>
           <li class="nav-item">
             <a class="nav-link waves-effect" href="/signin">
@@ -414,7 +412,30 @@
                         </a>
                         A classic grey blouse...
                       </div>
-                      
+
+                      <!-- Review Form -->
+                      <hr/>
+                      <form name="my-form" method="POST" enctype="utf8">
+                        <div class="form-group row">
+                          <label for="first_name" class="col-md-4 col-form-label text-md-right">First Name</label>
+                          <div class="col-md-6">
+                              <input type="text" id="first_name" class="form-control" name="first-name">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="last_name" class="col-md-4 col-form-label text-md-right">Last Name</label>
+                            <div class="col-md-6">
+                                <input type="text" id="last_name" class="form-control" name="last-name">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 offset-md-4">
+                            <button class="btn btn-primary" href="/">
+                              Leave Review
+                            </button> 
+                        </div>
+                  </form>
                       <!-- Modal footer -->
                       <div class="modal-footer">
                         <button type="button" class="btn btn-submit" data-dismiss="modal">Add to Cart</button>
