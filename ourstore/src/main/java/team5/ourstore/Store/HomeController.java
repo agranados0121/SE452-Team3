@@ -8,27 +8,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import team5.ourstore.Stock.ProductRepository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import team5.ourstore.Stock.Category;
 import team5.ourstore.Stock.ProductService;
 
 @Controller
 public class HomeController {
-
     
-    private ProductService ps;
-
     @Autowired
-    public void setProductService(ProductService ps){
-        this.ps = ps;
-    }
-    @RequestMapping("")
-    public String showAll(Model model){
-        model.addAttribute("products", ps.getProductCatalog());
-        return "home-page";
-    }
-    /*public ModelAndView home(){
-        ModelAndView mv = new ModelAndView("home-page");
-        return mv;
-    }*/
+    private ProductService productService;
 
-    
+    @PostMapping("/")
+    public ModelAndView viewAllProducts() {
+        ModelAndView model = new ModelAndView("home-page");
+        //  Use . notation to access the data fields/populate product page
+        model.addObject("products", productService.getProductCatalog());
+        return model;
+    }
+
+    //@PostMapping("/product-page")
+    public ModelAndView viewProductByCategory(Category category) {
+        ModelAndView model = new ModelAndView("/product-page/{category.category.getCategoryname()}");
+        //  Use . notation to access the data fields/populate product page
+        model.addObject("category", productService.getByCategoryid(category.getCategoryid()));
+        return model;
+    }
 }
