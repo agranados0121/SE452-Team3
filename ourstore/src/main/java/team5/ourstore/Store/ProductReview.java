@@ -22,13 +22,13 @@ public class ProductReview {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int reviewid;
-	private int productid;
-    private String review;
-    private String reviewer;
-    private String reviewdate;
+	int productid;
+    String review;
+    String reviewer;
+    String reviewdate;
 	@Min(value = 1, message = "You must give at least 1 star")
 	@Max(value = 5, message = "You can't give more than 5 stars")
-	private int rating;
+	int rating;
 
 	@Override
 	public String toString() {

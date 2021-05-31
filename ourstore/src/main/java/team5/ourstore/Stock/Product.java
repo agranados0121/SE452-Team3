@@ -7,13 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "product")
 public class Product {
-    
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "productid")
     private long productid;
@@ -24,9 +26,15 @@ public class Product {
     @Column(name="brandid")
     int brandid;
 
+    @Column(name="brandname")
+    String brandname;
+
     @Column(name = "categoryid")
     int categoryid;
 
+    @Column(name="categoryname")
+    String categoryname;
+    
     @Column(name = "price")
     float price;
 }

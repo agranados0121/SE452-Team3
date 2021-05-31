@@ -22,15 +22,15 @@ public class PaymentInfo {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int paymentid;
-	private String firstname;
-	private String lastname;
+	String firstname;
+	String lastname;
 	@Size(min=16, max=16, message = "Please enter a valid 16-digit credit card number")
-	private String cardnum;
+	String cardnum;
 	@Digits (integer = 3, fraction = 0, message = "Please enter a valid 3-digit security code")
-	private int securitynum;
+	int securitynum;
 	@Digits (integer = 5, fraction = 0, message = "Please enter a valid 5-digit zip code")
-	private int zip;
-	private String expdate;
+	int zip;
+	String expdate;
 
 	@Override
 	public String toString() {
