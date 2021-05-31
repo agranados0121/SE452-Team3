@@ -53,7 +53,9 @@
     <div class="container">
 
       <!-- Brand -->
-      <strong class="blue-text">ourStore</strong>
+      <nav class="navbar-brand">
+        <strong class="blue-text">ourStore</strong>
+      </nav>
 
       <!-- Collapse -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -302,7 +304,6 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong style='color: #666666'>$120.00 USD</strong>
                 </h4>
-
               </div>
               <!--Card content-->
 
@@ -358,7 +359,6 @@
 
             <!--Card-->
             <div class="card">
-
               <!--Card image-->
               <div class="view overlay">
                 <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg" class="card-img-top"
@@ -386,6 +386,46 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong style='color: #666666'>$99.00 USD</strong>
                 </h4>
+
+                <div class="container">
+              
+                <!-- Button to Open the Modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                  More info
+                </button>
+
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">Grey blouse</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg" class="card-img-top"
+                          alt="">
+                        <a>
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                        A classic grey blouse...
+                      </div>
+                      
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-submit" data-dismiss="modal">Add to Cart</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
 
               </div>
               <!--Card content-->
@@ -635,6 +675,7 @@
   <!--/.Footer-->
 
   <!-- SCRIPTS -->
+  <script type="text/javascript" src="js/modal.js"></script>
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <!-- Bootstrap tooltips -->

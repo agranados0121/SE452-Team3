@@ -23,8 +23,9 @@
     <div class="container">
 
       <!-- Brand -->
-      <strong class="blue-text">ourStore</strong>
-
+      <nav class="navbar-brand">
+        <strong class="blue-text">ourStore</strong>
+      </nav>
       <!-- Collapse -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -186,7 +187,7 @@
               <!--Grid row-->
 
               <hr>
-
+<!--
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="same-address">
                 <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
@@ -244,10 +245,32 @@
                     Security code required
                   </div>
                 </div>
-              </div>
+              </div> -->
               <hr class="mb-4">
-              <button id="submitBtn" class="btn btn-primary btn-lg btn-block" type="submit">Submit Your Order!</button>
+              <button id="submitBtn" class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal" data-target="#exampleModal">Submit Your Order!</button>
 
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <ol>
+                        <li>Order # 123456</li>
+                        <li>Tracking # 123456</li>
+                        <li>Shipping to 1234 Main St. Chicago, IL 60647</li>
+                      </ol>
+                    </div>
+                    <div class="modal-footer">
+                      <a class="nav-link waves-effect" href="/">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Home</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
 
           </div>
