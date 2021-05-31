@@ -8,6 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegistrationController {
     @GetMapping("/signup")
     public ModelAndView register(){
-        return new ModelAndView("signup");
+        return new ModelAndView("register");
     }
 }
