@@ -270,8 +270,7 @@
           <div class="col-lg-3 col-md-6 mb-4">
 
             <!--Card-->
-            <div class="card" th:each="product : ${Products}">
-              <img th:text="product.imageUrl"></h1>
+            <div class="card" th:each="product : ${products}">
               <h4 th:text=${product.productname}></h4>
               <h5 th:text=${product.brandname}></h5>
               <h6 th:text=${product.categoryname}></h6>
@@ -318,7 +317,11 @@
           <div class="col-lg-3 col-md-6 mb-4">
 
             <!--Card-->
-            <div class="card">
+            <div class="card" th:each="product : ${shoes}">
+              <h4 th:text=${product.productname}></h4>
+              <h5 th:text=${product.brandname}></h5>
+              <h6 th:text=${product.categoryname}></h6>
+              <h7 th:text=${product.price}></h7>
 
               <!--Card image-->
               <div class="view overlay">
@@ -359,7 +362,12 @@
           <div class="col-lg-3 col-md-6 mb-4">
 
             <!--Card-->
-            <div class="card">
+            <div class="card" th:each="product : ${shirts}">
+              <h4 th:text=${product.productname}></h4>
+              <h5 th:text=${product.brandname}></h5>
+              <h6 th:text=${product.categoryname}></h6>
+              <h7 th:text=${product.price}></h7>
+
               <!--Card image-->
               <div class="view overlay">
                 <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg" class="card-img-top"
@@ -464,7 +472,11 @@
           <div class="col-lg-3 col-md-6 mb-4">
 
             <!--Card-->
-            <div class="card">
+            <div class="card" th:each="product : ${electronics}">
+              <h4 th:text=${product.productname}></h4>
+              <h5 th:text=${product.brandname}></h5>
+              <h6 th:text=${product.categoryname}></h6>
+              <h7 th:text=${product.price}></h7>
 
               <!--Card image-->
               <div class="view overlay">

@@ -19,18 +19,20 @@ public class HomeController {
     @Autowired
     private ProductService productService;
 
-    //@RequestMapping("/")
-    @RequestMapping("home-page")
+    @RequestMapping("/")
+    //@RequestMapping("home-page")
     public String viewHomePage(Model model) {
-        List<Product> products = productService.getProductCatalog();
-        model.addAttribute("products", products);
+        model.addAttribute("products", productService.getProductCatalog());
+        model.addAttribute("shoes", productService.getAllByCategoryid(1));
+        model.addAttribute("shirts", productService.getAllByCategoryid(2));
+        model.addAttribute("electronics", productService.getAllByCategoryid(3));
         return "home-page";
     }
 
     //@PostMapping("/product-page")
     public ModelAndView viewProductByCategory(Category category) {
         ModelAndView model = new ModelAndView("/product-page/{category.category.getCategoryname()}");
-        model.addObject("category", productService.getByCategoryid(category.getCategoryid()));
+        model.addObject("items-of-given-category", productService.getAllByCategoryid(category.getCategoryid()));
         return model;
     }
 }

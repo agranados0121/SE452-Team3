@@ -1,5 +1,6 @@
 package team5.ourstore.Stock;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,17 @@ public class ProductService {
         return productRepository.findByProductid(productId);
     }
 
-    public Product getByCategoryid(long categoryId) {
-        return productRepository.findByCategoryid(categoryId);
+    public Product getProductByCategoryid(long categoryId) {
+        return productRepository.findProductByCategoryid(categoryId);
+    }
+
+    public List<Product> getAllByCategoryid(long categoryId) {
+        List<Product> productsByCategory = new ArrayList<Product>();
+        for (Product product : productRepository.findAll()) {
+            if (product.getCategoryid() == categoryId) 
+                productsByCategory.add(product);
+        }
+        return productsByCategory;
     }
 
     public List<Product> getProductCatalog() {
