@@ -1,15 +1,11 @@
 package team5.ourstore;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import team5.ourstore.Ordering.*;
 import team5.ourstore.Store.*;
