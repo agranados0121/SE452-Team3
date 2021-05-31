@@ -7,11 +7,13 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Categories {
-    @Id
-    @Column(name = "category_id")
-    int id;
+public class Brand {
 
-    @Column(name = "category_name")
-    String name;
+    @Id
+    @Column(name = "brandid")
+    int brandid;
+
+    @Column(name = "brandname")
+    String brandname;
+    
 }

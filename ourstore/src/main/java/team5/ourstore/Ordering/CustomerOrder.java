@@ -1,31 +1,27 @@
-package team5.ourstore.UserType;
+package team5.ourstore.Ordering;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import lombok.Data;
 
 @Data
 @Entity
-public class Customer {
-    
+public class CustomerOrder {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "orderid")
+    int orderid;
+    
     @Column(name = "customerid")
-    private int customerid;
+    int customerid;
 
-    @Column(name = "firstname")
-    String firstName;
-
-    @Column(name = "lastname")
-    String lastName;
-
-    @Column(name = "email")
-    String email;
-
-    @Column(name="password")
-    String password;
+    @Column(name = "orderdate")//Format: YYYY-MM-DD
+    String orderdate;
+    
+    @Column(name = "shipdate")//YYYY-MM-DD
+    String shipdate;
 
 }

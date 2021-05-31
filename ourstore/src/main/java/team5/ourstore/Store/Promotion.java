@@ -9,13 +9,21 @@ import lombok.Data;
 @Data
 @Entity
 public class Promotion {
+
     @Id
-    @Column(name = "promotion_id")
-    int id;
-    @Column(name = "product_id")
-    int product_id;
+    @Column(name = "promotionid")
+    int promotionid;
+    //@Column(name = "brandid")
+    //int brandid;
+    //@Column(name = "categoryid")
+    //int categoryid;
+    @Column(name = "productid")
+    long productid;
     @Column(name = "active")
     Boolean active;
-    @Column(name = "percent")
-    float percent;
+    @Column(name = "discount")
+    float discount;
+    @Column(name = "description")
+    String description;
+
 }

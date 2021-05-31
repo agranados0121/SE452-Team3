@@ -1,7 +1,7 @@
-INSERT Into admins(admin_id, email, passwords) VALUES
+INSERT Into Admin(adminid, email, password) VALUES
 (0, 'firewall@four.com', 'secret');
 
-INSERT Into brands(brand_id, brand_name) VALUES
+INSERT Into Brand(brandid, brandname) VALUES
 (1, 'Guchi'),
 (2, 'Nice'),
 (3, 'Luis V'),
@@ -9,16 +9,16 @@ INSERT Into brands(brand_id, brand_name) VALUES
 (5, 'Pear'),
 (6, 'GL');
 
-INSERT INTO Customer(id, first_name, last_name, email, passwords) VALUES
+INSERT INTO Customer(customerid, firstname, lastname, email, password) VALUES
 (1, 'John', 'Smith' , 'jsmith@gmail.com', '1234'),
 (2, 'Jane', 'Doe', 'jdoe123@gmail.com', 'password');
 
-INSERT Into categories(category_id, category_name) VALUES
+INSERT Into Category(categoryid, categoryname) VALUES
 (1, 'Shoes'),
 (2, 'Shirts'),
 (3, 'Electronics');
 
-INSERT INTO products(product_id, brand_id, category_id, price, product_name) VALUES
+INSERT INTO Product(productid, brandid, categoryid, price, productname) VALUES
 (1,1,1,80.00,'Black'),
 (2,1,1,55.00,'Strip'),
 (3,1,1,60.00,'Neon'),
@@ -40,8 +40,32 @@ INSERT INTO products(product_id, brand_id, category_id, price, product_name) VAL
 (19,6,3,900,'Dryer'),
 (20,6,3,1000,'Fridge');
 
+INSERT INTO Promotion(promotionId, productId, active, discount, description) VALUES 
+(1, 1, TRUE, .9, 'Shoes Sale - 10% off!'),
+(2, 3, TRUE, .8, 'Guchi Sale - 20% off!'),
+(3, 5, TRUE, .9, 'Nice Shirts Sale - 50% off!');
 
-
+INSERT INTO Inventory(productid, quantity) VALUES
+(1, 5),
+(2, 5),
+(3, 5),
+(4, 5),
+(5, 5),
+(6, 5),
+(7, 5),
+(8, 5),
+(9, 5),
+(10, 5),
+(11, 5),
+(12, 5),
+(13, 5),
+(14, 5),
+(15, 5),
+(16, 5),
+(17, 5),
+(18, 5),
+(19, 5),
+(20, 5);
 
 
 

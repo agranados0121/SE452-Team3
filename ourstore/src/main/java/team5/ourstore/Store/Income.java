@@ -9,9 +9,11 @@ import lombok.Data;
 @Data
 @Entity
 public class Income {
+
     @Id
-    @Column(name = "product_id")
-    int id;
+    @Column(name = "productid")
+    int productid;
     @Column(name = "price")
     float price;
+    
 }

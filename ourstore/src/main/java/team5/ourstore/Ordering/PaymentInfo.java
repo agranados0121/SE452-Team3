@@ -16,24 +16,24 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="PaymentInfo")
-@Document(collection = "PaymentInfo")
+@Table(name="paymentinfo")
+@Document(collection = "paymentinfo")
 public class PaymentInfo {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int payment_id;
-	private String first_name;
-	private String last_name;
+	private int paymentid;
+	private String firstname;
+	private String lastname;
 	@Size(min=16, max=16, message = "Please enter a valid 16-digit credit card number")
-	private String card_number;
+	private String cardnum;
 	@Digits (integer = 3, fraction = 0, message = "Please enter a valid 3-digit security code")
-	private int security_num;
+	private int securitynum;
 	@Digits (integer = 5, fraction = 0, message = "Please enter a valid 5-digit zip code")
 	private int zip;
-	private String exp_date;
+	private String expdate;
 
 	@Override
 	public String toString() {
-		return String.format("card number: %s", card_number);
+		return String.format("card number: %s", cardnum);
 	}
 }
