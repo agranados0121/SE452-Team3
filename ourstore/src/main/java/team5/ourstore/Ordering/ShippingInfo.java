@@ -21,13 +21,13 @@ public class ShippingInfo {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int shippingid;
-	private String firstname;
-	private String lastname;
-	private String streetaddress;
-	private String city;
-	private String state;
+	String firstname;
+	String lastname;
+	String streetaddress;
+	String city;
+	String state;
 	@Digits (integer = 5, fraction = 0, message = "Please enter a valid 5-digit zip code")
-	private int zip;
+	int zip;
 
 	@Override
 	public String toString() {

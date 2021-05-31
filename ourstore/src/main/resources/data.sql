@@ -18,27 +18,27 @@ INSERT Into Category(categoryid, categoryname) VALUES
 (2, 'Shirts'),
 (3, 'Electronics');
 
-INSERT INTO Product(productid, brandid, categoryid, price, productname) VALUES
-(1,1,1,80.00,'Black'),
-(2,1,1,55.00,'Strip'),
-(3,1,1,60.00,'Neon'),
-(4,1,2,80,'Pink'),
-(5,1,2,80,'Pride'),
-(6,1,2,80,'Zebra'),
-(7,2,1,75,'Running'),
-(8,2,1,75,'Casual'),
-(9,2,2,75,'Athletic'),
-(10,2,2,75,'Loose'),
-(11,3,2,250,'Basic'),
-(12,3,2,500,'Weird'),
-(13,4,3,500,'PS6'),
-(14,4,3,100,'Controler'),
-(15,4,3,80,'Membership'),
-(16,5,3,500,'Phone'),
-(17,5,3,200,'Watch'),
-(18,6,3,900,'Washing Machine'),
-(19,6,3,900,'Dryer'),
-(20,6,3,1000,'Fridge');
+INSERT INTO Product(productid, brandid, brandname, categoryid, categoryname, price, productname) VALUES
+(1,1,null,1,null,80.00,'Black'),
+(2,1,null,1,null,55.00,'Strip'),
+(3,1,null,1,null,60.00,'Neon'),
+(4,1,null,2,null,80,'Pink'),
+(5,1,null,2,null,80,'Pride'),
+(6,1,null,2,null,80,'Zebra'),
+(7,2,null,1,null,75,'Running'),
+(8,2,null,1,null,75,'Casual'),
+(9,2,null,2,null,75,'Athletic'),
+(10,2,null,2,null,75,'Loose'),
+(11,3,null,2,null,250,'Basic'),
+(12,3,null,2,null,500,'Weird'),
+(13,3,null,3,null,500,'PS6'),
+(14,4,null,3,null,100,'Controler'),
+(15,4,null,3,null,80,'Membership'),
+(16,5,null,3,null,500,'Phone'),
+(17,5,null,3,null,200,'Watch'),
+(18,6,null,3,null,900,'Washing Machine'),
+(19,6,null,3,null,900,'Dryer'),
+(20,6,null,3,null,1000,'Fridge');
 
 INSERT INTO Promotion(promotionId, productId, active, discount, description) VALUES 
 (1, 1, TRUE, .9, 'Shoes Sale - 10% off!'),

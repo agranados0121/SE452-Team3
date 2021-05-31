@@ -272,9 +272,10 @@
             <!--Card-->
             <div class="card" th:each="product : ${Products}">
               <img th:text="product.imageUrl"></h1>
-              <h4 th:text="product.name"></h4>
-              <h5 th:text="product.price"></h5>
-              <h6 th:text="product.description"></h4>
+              <h4 th:text=${product.productname}></h4>
+              <h5 th:text=${product.brandname}></h5>
+              <h6 th:text=${product.categoryname}></h6>
+              <h7 th:text=${product.price}></h7>
 
 
               <!--Card image-->
@@ -295,7 +296,7 @@
                 </a>
                 <h5>
                   <strong>
-                    <a href="" class="dark-grey-text">Denim shirt
+                    <a class="dark-grey-text" href="@{product-page}">Denim shirt
                       <span class="badge badge-pill danger-color">NEW</span>
                     </a>
                   </strong>

@@ -26,23 +26,26 @@ CREATE TABLE IF NOT EXISTS CustomerOrder(
 
 CREATE TABLE IF NOT EXISTS Category(
 	categoryid INT PRIMARY KEY,
-	categoryname VARCHAR(30)
+	categoryname VARCHAR(30) UNIQUE
 	);
 	
 CREATE TABLE IF NOT EXISTS Brand(
 	brandid INT PRIMARY KEY,
-	brandname VARCHAR(30)
+	brandname VARCHAR(30) UNIQUE
 	);
 	
 CREATE TABLE IF NOT EXISTS Product(
 	productid INT PRIMARY KEY,
 	productname VARCHAR(64),
 	brandid INT,
+	brandname VARCHAR(30),
 	categoryid INT,
+	categoryname VARCHAR(30),
 	price DECIMAL,
-	description VARCHAR(200),
 	FOREIGN KEY(brandid) REFERENCES Brand(brandid),
-	FOREIGN KEY(categoryid) REFERENCES Category(categoryid)
+	FOREIGN KEY(brandname) REFERENCES Brand(brandname),
+	FOREIGN KEY(categoryid) REFERENCES Category(categoryid),
+	FOREIGN KEY(categoryname) REFERENCES Category(categoryname)
 	);
 	
 CREATE TABLE IF NOT EXISTS Inventory(
