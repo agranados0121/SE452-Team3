@@ -1,1 +1,0 @@
-Lets put any pictures/html/css etc files in this directory unless they work better else where

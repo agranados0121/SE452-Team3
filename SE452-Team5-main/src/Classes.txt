@@ -1,8 +1,0 @@
-Proposed classes and functionality:
-    Shopping cart functionality
-    Store
-    Employee
-    Customers
-    Check Out
-    Check Inventory
-    Return
